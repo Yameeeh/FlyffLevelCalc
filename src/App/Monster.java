@@ -57,6 +57,4 @@ public class Monster {
 		this.efficiency = efficiency;
 	}
 	
-	
-	
 }
