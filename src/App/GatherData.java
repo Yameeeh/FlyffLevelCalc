@@ -51,6 +51,7 @@ public class GatherData {
 				}
 			}
 
+			monsters.removeIf(mon -> mon.getName().startsWith("[Event]"));
 			monsters.sort(Comparator.comparingDouble(Monster::getRelativeDamage));
 
 			return monsters;
