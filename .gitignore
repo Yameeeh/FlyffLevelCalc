@@ -1,0 +1,11 @@
+# Eclipse-specific files
+.settings/
+.classpath
+.project
+
+# Maven build directory
+target/
+
+# IntelliJ IDEA-specific files (if used)
+.idea/
+*.iml
