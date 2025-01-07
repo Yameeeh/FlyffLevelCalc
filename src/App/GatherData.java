@@ -22,38 +22,41 @@ public class GatherData {
 		WebDriver driver = new ChromeDriver();
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-		driver.get(url);
-
-		String script = "window.localStorage.setItem('settings', JSON.stringify({level: '" + playerLevel + "'}));";
-		((JavascriptExecutor) driver).executeScript(script);
-
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("mud-table-row")));
-
-		List<Monster> monsters = new ArrayList<>();
-
-		// Process the first page
-		monsters.addAll(parsePage(driver, playerLevel));
-
-		// Process the second page, if it exists
 		try {
-			WebElement nextPageButton = driver.findElement(By.cssSelector("[aria-label='Next page']"));
-			if (nextPageButton.isEnabled()) {
-				nextPageButton.click();
+			driver.get(url);
 
-				wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("mud-table-row")));
-				monsters.addAll(parsePage(driver, playerLevel));
-			} else {
-				System.out.println("Next page button is disabled. No further pages.");
+			String script = "window.localStorage.setItem('settings', JSON.stringify({level: '" + playerLevel + "'}));";
+			((JavascriptExecutor) driver).executeScript(script);
+
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("mud-table-row")));
+
+			List<Monster> monsters = new ArrayList<>();
+
+			// Process the first page
+			monsters.addAll(parsePage(driver, playerLevel));
+
+			// Process the second page, if it exists
+			try {
+				WebElement nextPageButton = driver.findElement(By.cssSelector("[aria-label='Next page']"));
+				if (nextPageButton.isEnabled()) {
+					nextPageButton.click();
+
+					wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("mud-table-row")));
+					monsters.addAll(parsePage(driver, playerLevel));
+				} else {
+					System.out.println("Next page button is disabled. No further pages.");
+				}
+			} catch (Exception e) {
+				System.out.println("No next page button found or error navigating to it.");
 			}
-		} catch (Exception e) {
-			System.out.println("No next page button found or error navigating to it.");
+
+			monsters.sort(Comparator.comparingDouble(Monster::getRelativeDamage));
+
+			return monsters;
+
+		} finally {
+			driver.quit();
 		}
-
-		driver.quit();
-
-		monsters.sort(Comparator.comparingDouble(Monster::getRelativeDamage));
-
-		return monsters;
 	}
 
 	private static List<Monster> parsePage(WebDriver driver, int playerLevel) {
@@ -80,7 +83,7 @@ public class GatherData {
 
 				monsters.add(mon);
 			} catch (Exception e) {
-				// Do Nothing, because it should only ever be the table header
+				// Do nothing, because it should only ever be the table header
 			}
 		}
 		return monsters;
