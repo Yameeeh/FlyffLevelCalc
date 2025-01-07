@@ -26,10 +26,12 @@ public class MainClass {
 				monster.setEfficiency(monsters.get(0).getRelativeDamage() / monster.getRelativeDamage());
 			}
 			DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.US);
-			DecimalFormat df = new DecimalFormat("#.##", symbols);
-			System.out.println("#" + i + " " + monster.getName() + ", " + monster.getElement() + ", lvl "
-					+ monster.getLvl() + ", Relative Damage per %: " + (long) monster.getRelativeDamage() + ", Efficiency: "
-					+ df.format(monster.getEfficiency() * 100) + "%");
+			DecimalFormat efficiencyFormat = new DecimalFormat("#.##", symbols);
+			DecimalFormat damageFormat = new DecimalFormat("#,###", symbols);
+			System.out.println(
+					"#" + i + " " + monster.getName() + ", " + monster.getElement() + ", lvl " + monster.getLvl()
+							+ ", Relative Damage per %: " + damageFormat.format((long) monster.getRelativeDamage())
+							+ ", Efficiency: " + efficiencyFormat.format(monster.getEfficiency() * 100) + "%");
 			i++;
 		}
 
