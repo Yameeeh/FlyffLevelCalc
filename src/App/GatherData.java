@@ -36,16 +36,18 @@ public class GatherData {
 
 		// Process the second page, if it exists
 		try {
-			WebElement nextPageButton = wait
-					.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[aria-label='Next page']")));
-
+			WebElement nextPageButton = driver.findElement(By.cssSelector("[aria-label='Next page']"));
 			if (nextPageButton.isEnabled()) {
+				wait.until(ExpectedConditions.elementToBeClickable(nextPageButton));
 				nextPageButton.click();
+
 				wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("mud-table-row")));
 				monsters.addAll(parsePage(driver, playerLevel));
+			} else {
+				System.out.println("Next page button is disabled. No further pages.");
 			}
 		} catch (Exception e) {
-			System.out.println("No second page or error navigating to it.");
+			System.out.println("No next page button found or error navigating to it.");
 		}
 
 		driver.quit();
