@@ -43,8 +43,6 @@ public class GatherData {
 
 					wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("mud-table-row")));
 					monsters.addAll(parsePage(driver, playerLevel));
-				} else {
-					System.out.println("Next page button is disabled. No further pages.");
 				}
 			} catch (Exception e) {
 				System.out.println("No next page button found or error navigating to it.");
