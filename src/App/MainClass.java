@@ -9,7 +9,7 @@ public class MainClass {
 
 	public static void main(String[] args) {
 
-		int level = 164;
+		int level = 150;
 		int lvlMinMon = level;
 		int lvlMaxMon = level + 15;
 
@@ -28,7 +28,7 @@ public class MainClass {
 			DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.US);
 			DecimalFormat df = new DecimalFormat("#.##", symbols);
 			System.out.println("#" + i + " " + monster.getName() + ", " + monster.getElement() + ", lvl "
-					+ monster.getLvl() + ", Relative Damage: " + monster.getRelativeDamage() + ", Efficiency: "
+					+ monster.getLvl() + ", Relative Damage per %: " + (long) monster.getRelativeDamage() + ", Efficiency: "
 					+ df.format(monster.getEfficiency() * 100) + "%");
 			i++;
 		}
