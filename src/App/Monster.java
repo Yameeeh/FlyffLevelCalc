@@ -7,6 +7,7 @@ public class Monster {
 	private String element;
 	private int dmgPercent;
 	private double relativeDamage;
+	private double efficiency;
 	
 	public String getName() {
 		return name;
@@ -47,5 +48,15 @@ public class Monster {
 	public void setRelativeDamage(double proportionateDamage) {
 		this.relativeDamage = proportionateDamage;
 	}
+
+	public double getEfficiency() {
+		return efficiency;
+	}
+
+	public void setEfficiency(double efficiency) {
+		this.efficiency = efficiency;
+	}
+	
+	
 	
 }
