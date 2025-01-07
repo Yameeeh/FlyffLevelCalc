@@ -22,7 +22,7 @@ public class MainClass {
 		for (Monster monster : monsters) {
 			if (i == 1) {
 				monster.setEfficiency(1.00);
-			} else if (i > 1) {
+			} else {
 				monster.setEfficiency(monsters.get(0).getRelativeDamage() / monster.getRelativeDamage());
 			}
 			DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.US);
