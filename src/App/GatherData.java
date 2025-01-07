@@ -40,9 +40,11 @@ public class GatherData {
 				try {
 					WebElement nextPageButton = driver.findElement(By.cssSelector("[aria-label='Next page']"));
 					if (nextPageButton.isEnabled()) {
-						// short sleep to ensure the page isn't skipped too early
-						Thread.sleep(50);
+						String currentPageSource = driver.getPageSource();
 						nextPageButton.click();
+
+						// Wait for the page to load
+						wait.until(driver1 -> !driver1.getPageSource().equals(currentPageSource));
 						wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("mud-table-row")));
 					} else {
 						break;
