@@ -32,20 +32,23 @@ public class GatherData {
 
 			List<Monster> monsters = new ArrayList<>();
 
-			// Process the first page
-			monsters.addAll(parsePage(driver, playerLevel));
+			while (true) {
+				// Parse the current page
+				monsters.addAll(parsePage(driver, playerLevel));
 
-			// Process the second page, if it exists
-			try {
-				WebElement nextPageButton = driver.findElement(By.cssSelector("[aria-label='Next page']"));
-				if (nextPageButton.isEnabled()) {
-					nextPageButton.click();
-
-					wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("mud-table-row")));
-					monsters.addAll(parsePage(driver, playerLevel));
+				// Try to find and click the "Next page" button, else break the loop
+				try {
+					WebElement nextPageButton = driver.findElement(By.cssSelector("[aria-label='Next page']"));
+					if (nextPageButton.isEnabled()) {
+						nextPageButton.click();
+						wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("mud-table-row")));
+					} else {
+						break;
+					}
+				} catch (Exception e) {
+					System.out.println("No more pages to read or error navigating to the next page.");
+					break;
 				}
-			} catch (Exception e) {
-				System.out.println("No next page button found or error navigating to it.");
 			}
 
 			monsters.sort(Comparator.comparingDouble(Monster::getRelativeDamage));
@@ -53,7 +56,7 @@ public class GatherData {
 			return monsters;
 
 		} finally {
-			driver.quit();
+//			driver.quit();
 		}
 	}
 
