@@ -28,10 +28,9 @@ public class MainClass {
 			DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.US);
 			DecimalFormat efficiencyFormat = new DecimalFormat("#.##", symbols);
 			DecimalFormat damageFormat = new DecimalFormat("#,###", symbols);
-			System.out.println(
-					"#" + i + " " + monster.getName() + ", " + monster.getElement() + ", lvl " + monster.getLvl()
-							+ ", Relative Damage per %: " + damageFormat.format((long) monster.getRelativeDamage())
-							+ ", Efficiency: " + efficiencyFormat.format(monster.getEfficiency() * 100) + "%");
+			System.out.println("#" + i + " " + monster.getName() + ", " + monster.getElement() + ", lvl "
+					+ monster.getLvl() + ", Relative Damage per %: " + damageFormat.format(monster.getRelativeDamage())
+					+ ", Efficiency: " + efficiencyFormat.format(monster.getEfficiency() * 100) + "%");
 			i++;
 		}
 
