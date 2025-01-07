@@ -38,7 +38,6 @@ public class GatherData {
 		try {
 			WebElement nextPageButton = driver.findElement(By.cssSelector("[aria-label='Next page']"));
 			if (nextPageButton.isEnabled()) {
-				wait.until(ExpectedConditions.elementToBeClickable(nextPageButton));
 				nextPageButton.click();
 
 				wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("mud-table-row")));
@@ -81,7 +80,7 @@ public class GatherData {
 
 				monsters.add(mon);
 			} catch (Exception e) {
-				// Do Nothing
+				// Do Nothing, because it should only ever be the table header
 			}
 		}
 		return monsters;
