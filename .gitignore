@@ -9,3 +9,6 @@ target/
 # IntelliJ IDEA-specific files (if used)
 .idea/
 *.iml
+
+# bin directory
+/bin/
