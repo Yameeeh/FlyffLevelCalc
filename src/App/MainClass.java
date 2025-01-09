@@ -2,6 +2,7 @@ package App;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -13,7 +14,13 @@ public class MainClass {
 		int lvlMinMon = level;
 		int lvlMaxMon = level + 15;
 
-		String url = URLGenerator.generateURL(lvlMinMon, lvlMaxMon, true, "False");
+		List<String> areas = new ArrayList<>();
+		// Comment out any unwanted area
+		areas.add("dungeon");
+		areas.add("normal");
+		areas.add("instance");
+
+		String url = URLGenerator.generateURL(lvlMinMon, lvlMaxMon, true, "False", areas);
 
 		List<Monster> monsters = GatherData.parse(url, level);
 
