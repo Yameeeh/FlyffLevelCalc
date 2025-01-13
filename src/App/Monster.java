@@ -1,42 +1,43 @@
 package App;
 
 public class Monster {
-	
+
 	private String name;
 	private int lvl;
 	private String element;
 	private int dmgPercent;
 	private double relativeDamage;
 	private double efficiency;
-	
+	private int killsNeeded;
+
 	public String getName() {
 		return name;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public int getLvl() {
 		return lvl;
 	}
-	
+
 	public void setLvl(int lvl) {
 		this.lvl = lvl;
 	}
-	
+
 	public String getElement() {
 		return element;
 	}
-	
+
 	public void setElement(String element) {
 		this.element = element;
 	}
-	
+
 	public int getDmgPercent() {
 		return dmgPercent;
 	}
-	
+
 	public void setDmgPercent(int dmgPercent) {
 		this.dmgPercent = dmgPercent;
 	}
@@ -56,5 +57,13 @@ public class Monster {
 	public void setEfficiency(double efficiency) {
 		this.efficiency = efficiency;
 	}
-	
+
+	public int getKillsNeeded() {
+		return killsNeeded;
+	}
+
+	public void setKillsNeeded(int killsNeeded) {
+		this.killsNeeded = killsNeeded;
+	}
+
 }

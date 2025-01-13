@@ -11,7 +11,7 @@ public class MainClass {
 	public static void main(String[] args) {
 
 		int level = 150;
-		int lvlMinMon = level;
+		int lvlMinMon = level - 1;
 		int lvlMaxMon = level + 15;
 
 		List<String> areas = new ArrayList<>();
@@ -38,8 +38,8 @@ public class MainClass {
 
 			System.out.println("#" + String.format("%02d", i) + " " + monster.getName() + ", " + monster.getElement()
 					+ ", lvl " + monster.getLvl() + ", Relative Damage per %: "
-					+ damageFormat.format(monster.getRelativeDamage()) + ", Efficiency: "
-					+ efficiencyFormat.format(monster.getEfficiency() * 100) + "%");
+					+ damageFormat.format(monster.getRelativeDamage()) + ", Required Kills: " + monster.getKillsNeeded()
+					+ ", Efficiency: " + efficiencyFormat.format(monster.getEfficiency() * 100) + "%");
 			i++;
 		}
 

@@ -56,6 +56,7 @@ public class GatherData {
 			}
 
 			monsters.removeIf(mon -> mon.getName().startsWith("[Event]"));
+			monsters.removeIf(mon -> mon.getName().startsWith("Vice Veduque"));
 			monsters.sort(Comparator.comparingDouble(Monster::getRelativeDamage));
 
 			return monsters;
@@ -69,7 +70,13 @@ public class GatherData {
 		List<WebElement> rows = driver.findElements(By.className("mud-table-row"));
 		List<Monster> monsters = new ArrayList<>();
 
+		boolean isHeader = true;
+
 		for (WebElement row : rows) {
+			if (isHeader) {
+				isHeader = false;
+				continue;
+			}
 			try {
 				Monster mon = new Monster();
 
@@ -82,6 +89,10 @@ public class GatherData {
 				WebElement elementElement = row.findElement(By.cssSelector("[data-label='Element']"));
 				mon.setElement(elementElement.getText());
 
+				WebElement expElement = row.findElement(By.cssSelector("[data-label='Experience']"));
+				mon.setKillsNeeded(
+						(int) Math.ceil(100 / Double.valueOf(expElement.getText().replace("%", "").replace(",", "."))));
+
 				WebElement dmgElement = row.findElement(By.cssSelector("[data-label='DMG per %']"));
 				mon.setDmgPercent(Integer.valueOf(dmgElement.getText().replaceAll("[^\\d]", "")));
 
@@ -89,7 +100,8 @@ public class GatherData {
 
 				monsters.add(mon);
 			} catch (Exception e) {
-				// Do nothing, because it should only ever be the table header
+				System.out.println("Error parsing row: " + e.getMessage());
+				e.printStackTrace();
 			}
 		}
 		return monsters;
