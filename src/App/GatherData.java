@@ -20,7 +20,7 @@ public class GatherData {
 		System.setProperty("webdriver.chrome.driver", driverPath);
 
 		WebDriver driver = new ChromeDriver();
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
 		try {
 			driver.get(url);
