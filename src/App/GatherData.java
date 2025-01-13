@@ -90,7 +90,7 @@ public class GatherData {
 				mon.setElement(elementElement.getText());
 
 				WebElement expElement = row.findElement(By.cssSelector("[data-label='Experience']"));
-				mon.setKillsNeeded(
+				mon.setRequiredKills(
 						(int) Math.ceil(100 / Double.valueOf(expElement.getText().replace("%", "").replace(",", "."))));
 
 				WebElement dmgElement = row.findElement(By.cssSelector("[data-label='DMG per %']"));

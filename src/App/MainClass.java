@@ -38,7 +38,7 @@ public class MainClass {
 
 			System.out.println("#" + String.format("%02d", i) + " " + monster.getName() + ", " + monster.getElement()
 					+ ", lvl " + monster.getLvl() + ", Relative Damage per %: "
-					+ damageFormat.format(monster.getRelativeDamage()) + ", Required Kills: " + monster.getKillsNeeded()
+					+ damageFormat.format(monster.getRelativeDamage()) + ", Required Kills: " + monster.getRequiredKills()
 					+ ", Efficiency: " + efficiencyFormat.format(monster.getEfficiency() * 100) + "%");
 			i++;
 		}

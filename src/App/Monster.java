@@ -8,7 +8,7 @@ public class Monster {
 	private int dmgPercent;
 	private double relativeDamage;
 	private double efficiency;
-	private int killsNeeded;
+	private int requiredKills;
 
 	public String getName() {
 		return name;
@@ -58,12 +58,12 @@ public class Monster {
 		this.efficiency = efficiency;
 	}
 
-	public int getKillsNeeded() {
-		return killsNeeded;
+	public int getRequiredKills() {
+		return requiredKills;
 	}
 
-	public void setKillsNeeded(int killsNeeded) {
-		this.killsNeeded = killsNeeded;
+	public void setRequiredKills(int killsNeeded) {
+		this.requiredKills = killsNeeded;
 	}
 
 }
