@@ -94,7 +94,15 @@ public class GatherData {
 						(int) Math.ceil(100 / Double.valueOf(expElement.getText().replace("%", "").replace(",", "."))));
 
 				WebElement dmgElement = row.findElement(By.cssSelector("[data-label='DMG per %']"));
-				mon.setDmgPercent(Integer.valueOf(dmgElement.getText().replaceAll("[^\\d]", "")));
+				String dmgText = dmgElement.getText().replaceAll("[^\\d]", "");
+
+				// skip the monster if the string is empty, this happens when it's listed as "∞
+				// DMG per %"
+				if (dmgText.isEmpty()) {
+					continue;
+				}
+
+				mon.setDmgPercent(Integer.valueOf(dmgText));
 
 				mon.setRelativeDamage(Calc.calcRelativeDmg(playerLevel, mon.getLvl(), mon.getDmgPercent()));
 
