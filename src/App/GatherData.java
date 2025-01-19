@@ -15,6 +15,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class GatherData {
 
+	private static boolean isHeader = true;
+
 	public static List<Monster> parse(String url, int playerLevel) {
 		String driverPath = "resources/chromedriver.exe";
 		System.setProperty("webdriver.chrome.driver", driverPath);
@@ -42,6 +44,7 @@ public class GatherData {
 					if (nextPageButton.isEnabled()) {
 						String currentPageSource = driver.getPageSource();
 						nextPageButton.click();
+						isHeader = true;
 
 						// Wait for the page to load
 						wait.until(driver1 -> !driver1.getPageSource().equals(currentPageSource));
@@ -69,8 +72,6 @@ public class GatherData {
 	private static List<Monster> parsePage(WebDriver driver, int playerLevel) {
 		List<WebElement> rows = driver.findElements(By.className("mud-table-row"));
 		List<Monster> monsters = new ArrayList<>();
-
-		boolean isHeader = true;
 
 		for (WebElement row : rows) {
 			if (isHeader) {
