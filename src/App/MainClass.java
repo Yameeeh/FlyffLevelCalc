@@ -10,13 +10,15 @@ public class MainClass {
 
 	public static void main(String[] args) {
 
-		int level = 150;
-		int lvlMinMon = level - 1;
+		// Your characters level
+		int level = 80;
+		// Monster level (value of the + indicates the maximum level difference)
+		int lvlMinMon = level;
 		int lvlMaxMon = level + 15;
 
 		List<String> areas = new ArrayList<>();
 		// Comment out any unwanted area
-		areas.add("dungeon");
+		// areas.add("dungeon");
 		areas.add("normal");
 		areas.add("instance");
 

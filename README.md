@@ -2,8 +2,11 @@ There is no GUI.
 
 Once you cloned the repo make sure to run a maven install on it to install the dependencies.
 
-Also you need to have chrome version 131.0.6778.205 installed, the current newest one.
-This is because I used Selenium with a Chromedriver to scrape the data from Flyffipedia.
+Also you need to have a chrome version installed and download the fitting ChromeDriver.
+You can find the ChromeDrivers in this link:
+https://googlechromelabs.github.io/chrome-for-testing/
+This is because I used Selenium to scrape the data from Flyffipedia.
+Once you have downloaded and extracted the ChromeDriver all you need to do is drop the .exe in the resources folder.
 
 When it's set up you just gotta set the "level" variable in the "MainClass" to your desired player level, say your current mains level, and then execute it.
 
