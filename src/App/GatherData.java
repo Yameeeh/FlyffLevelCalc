@@ -53,7 +53,7 @@ public class GatherData {
 						break;
 					}
 				} catch (Exception e) {
-					System.out.println("No more pages to read or error navigating to the next page.");
+					System.out.println("Error navigating to the next page.");
 					break;
 				}
 			}
