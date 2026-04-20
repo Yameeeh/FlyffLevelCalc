@@ -12,3 +12,6 @@ target/
 
 # bin directory
 /bin/
+
+#ChromeDriver
+resources/chromedriver.exe
