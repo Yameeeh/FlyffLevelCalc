@@ -17,7 +17,7 @@ public class MainClass {
 		int lvlMaxMon = level + 15;
 
 		List<String> areas = new ArrayList<>();
-		// Comment out any unwanted area
+		// Comment out any unwanted area using "//"
 		// areas.add("dungeon");
 		areas.add("normal");
 		areas.add("instance");
