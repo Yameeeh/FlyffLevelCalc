@@ -4,9 +4,13 @@ Once you cloned the repo make sure to run a maven install on it to install the d
 
 Also you need to have a chrome version installed and download the fitting ChromeDriver.
 You can find the ChromeDrivers in this link:
+
 https://googlechromelabs.github.io/chrome-for-testing/
+
 Your currently installed Chrome Version you can find by pasting this URL into Chrome:
+
 chrome://settings/help
+
 This is because I used Selenium to scrape the data from Flyffipedia.
 Once you have downloaded and extracted the ChromeDriver all you need to do is drop the .exe in the resources folder.
 
