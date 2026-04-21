@@ -2,7 +2,7 @@ package App;
 
 public class Calc {
 
-	public static double calcRelativeDmg(int lvlAttacker, int lvlDefender, int reqDamage) {
+	public static double calcRelativeDmg(int lvlAttacker, int lvlDefender, long reqDamage) {
 		int delta = lvlDefender - lvlAttacker;
 		double propDmg;
 		if (delta > 0) {

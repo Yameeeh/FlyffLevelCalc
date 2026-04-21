@@ -18,7 +18,7 @@ public class MainClass {
 
 		List<String> areas = new ArrayList<>();
 		// Comment out any unwanted area using "//"
-		// areas.add("dungeon");
+		areas.add("dungeon");
 		areas.add("normal");
 		areas.add("instance");
 

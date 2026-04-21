@@ -103,7 +103,7 @@ public class GatherData {
 					continue;
 				}
 
-				mon.setDmgPercent(Integer.valueOf(dmgText));
+				mon.setDmgPercent(Long.parseLong(dmgText));
 
 				mon.setRelativeDamage(Calc.calcRelativeDmg(playerLevel, mon.getLvl(), mon.getDmgPercent()));
 

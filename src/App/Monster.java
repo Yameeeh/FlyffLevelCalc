@@ -5,7 +5,7 @@ public class Monster {
 	private String name;
 	private int lvl;
 	private String element;
-	private int dmgPercent;
+	private long dmgPercent;
 	private double relativeDamage;
 	private double efficiency;
 	private int requiredKills;
@@ -34,11 +34,11 @@ public class Monster {
 		this.element = element;
 	}
 
-	public int getDmgPercent() {
+	public long getDmgPercent() {
 		return dmgPercent;
 	}
 
-	public void setDmgPercent(int dmgPercent) {
+	public void setDmgPercent(long dmgPercent) {
 		this.dmgPercent = dmgPercent;
 	}
 
